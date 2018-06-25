@@ -2,15 +2,16 @@ const Validator = require('validator');
 const isEmpty = require('./is-empty');
 
 module.exports = function validateRegisterInput(data) {
-    const { name, email, password } = data;
-    const errors = {};
+
+    let { name, email, password } = data;
+    let errors = {};
 
     name = !isEmpty(name) ? name : '';
     email = !isEmpty(email) ? email : '';
     password = !isEmpty(password) ? password : '';
 
-    if (!Validator.isLength(name, {min: 2, max: 30})) {
-        errors.name = 'Name must be between 2 and 30 characters';
+    if (!Validator.isLength(name, {min: 6, max: 30})) {
+        errors.name = 'Name must be between 6 and 30 characters';
     }
 
     if (Validator.isEmpty(name)) {

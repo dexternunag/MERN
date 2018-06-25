@@ -8,6 +8,7 @@ const keys = require('../../config/keys');
 
 // Load input validation
 const validateRegisterInput = require('../../validation/register');
+const validateUserLogin = require('../../validation/login');
 
 // Load user model
 const User = require('../../models/User');
@@ -74,7 +75,7 @@ router.post('/register', async (req, res) => {
         }
 
     } catch (error) {
-        
+        console.log(error)
     }
 });
 
@@ -85,6 +86,13 @@ router.post('/register', async (req, res) => {
  */
 router.post('/login', async (req, res) => {
     try {
+        const { errors, isValid } = await validateUserLogin(req.body);
+        
+        // Check validation
+        if (!isValid) {
+            return res.status(400).json(errors);
+        }
+
         const { email, password } = req.body;
 
         // Find user by email
@@ -118,7 +126,7 @@ router.post('/login', async (req, res) => {
             res.status(400).json({error: 'Password incorrect!'});
         }
     } catch (error) {
-        
+        throw new Error(error);
     }
 });
 
