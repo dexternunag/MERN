@@ -8,7 +8,7 @@ const keys = require('../../config/keys');
 
 // Load input validation
 const validateRegisterInput = require('../../validation/register');
-const validateUserLogin = require('../../validation/login');
+const validateLoginInput = require('../../validation/login');
 
 // Load user model
 const User = require('../../models/User');
@@ -86,7 +86,7 @@ router.post('/register', async (req, res) => {
  */
 router.post('/login', async (req, res) => {
     try {
-        const { errors, isValid } = await validateUserLogin(req.body);
+        const { errors, isValid } = await validateLoginInput(req.body);
         
         // Check validation
         if (!isValid) {
