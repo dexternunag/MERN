@@ -23,7 +23,7 @@ router.get('/view', (req, res) => {
 });
 
 /**
- * @router GET api/users/register
+ * @router POST api/users/register
  * @desc   Register user
  * @access Public
  */
