@@ -35,35 +35,35 @@ module.exports = function validateProfileInput(data) {
         errors.skills = 'Skills field is required';
     }
 
-    if(!isEmpty(website)) {
-        if (!Validator.isURL(website)) {
-            errors.website = 'Not a valid URL';
-        }
-    }
+    // if(!isEmpty(website)) {
+    //     if (!Validator.isURL(website)) {
+    //         errors.website = 'Not a valid URL';
+    //     }
+    // }
 
-    if(!isEmpty(youtube)) {
-        if (!Validator.isURL(youtube)) {
-            errors.youtube = 'Not a valid URL';
-        }
-    }
+    // if(!isEmpty(youtube)) {
+    //     if (!Validator.isURL(youtube)) {
+    //         errors.youtube = 'Not a valid URL';
+    //     }
+    // }
 
-    if(!isEmpty(facebook)) {
-        if (!Validator.isURL(facebook)) {
-            errors.facebook = 'Not a valid URL';
-        }
-    }
+    // if(!isEmpty(facebook)) {
+    //     if (!Validator.isURL(facebook)) {
+    //         errors.facebook = 'Not a valid URL';
+    //     }
+    // }
 
-    if(!isEmpty(instagram)) {
-        if (!Validator.isURL(instagram)) {
-            errors.instagram = 'Not a valid URL';
-        }
-    }
+    // if(!isEmpty(instagram)) {
+    //     if (!Validator.isURL(instagram)) {
+    //         errors.instagram = 'Not a valid URL';
+    //     }
+    // }
 
-    if(!isEmpty(linkedin)) {
-        if (!Validator.isURL(linkedin)) {
-            errors.linkedin = 'Not a valid URL';
-        }
-    }
+    // if(!isEmpty(linkedin)) {
+    //     if (!Validator.isURL(linkedin)) {
+    //         errors.linkedin = 'Not a valid URL';
+    //     }
+    // }
 
     return {
         errors,
