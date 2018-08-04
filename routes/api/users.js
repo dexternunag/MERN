@@ -38,7 +38,7 @@ router.post('/register', async (req, res) => {
 
         const user = await User.findOne({email: req.body.email});
         if (user) {
-            return res.status(400).json({error: 'Email already exists!'});
+            return res.status(400).json({email: 'Email already exists!'});
         } else {
             const { name, email, password } = req.body;
 
@@ -99,7 +99,7 @@ router.post('/login', async (req, res) => {
         const user = await User.findOne({email});
 
         if (!user) {
-            return res.status(404).json({error: 'User not found!'});
+            return res.status(404).json({email: 'User not found!'});
         }
 
         // Check password
@@ -123,7 +123,7 @@ router.post('/login', async (req, res) => {
                 }
             );
         } else {
-            res.status(400).json({error: 'Password incorrect!'});
+            res.status(400).json({password: 'Password incorrect!'});
         }
     } catch (error) {
         throw new Error(error);
