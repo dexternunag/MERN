@@ -1,8 +1,9 @@
 import axios from 'axios'
-import { ADD_POST, GET_POSTS, GET_POST, POST_LOADING, GET_ERRORS, DELETE_POST } from './types'
+import { ADD_POST, GET_POSTS, GET_POST, POST_LOADING, GET_ERRORS, DELETE_POST, CLEAR_ERRORS } from './types'
 
 // Add post
 export const addPost = postData => dispatch => {
+    dispatch(clearErrors());
     axios
         .post('/api/posts', postData)
         .then(res => 
@@ -103,6 +104,7 @@ export const removeLike = id => dispatch => {
 
 // Add Comment
 export const addComment = (id, commentData) => dispatch => {
+    dispatch(clearErrors());
     axios
         .post(`/api/posts/comment/${id}`, commentData)
         .then(res => 
@@ -137,10 +139,16 @@ export const deleteComment = (postId, commentId) => dispatch => {
         );
 }
 
-
 // Set loading state 
 export const setPostLoading = () => {
     return {
         type: POST_LOADING
+    }
+}
+
+// clear errors
+export const clearErrors = () => {
+    return {
+        type: CLEAR_ERRORS
     }
 }
